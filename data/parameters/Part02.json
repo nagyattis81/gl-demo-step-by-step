@@ -1,0 +1,50 @@
+{
+	"children": [
+	],
+	"parameters": [
+		{
+			"name": "clearColor",
+			"value": [
+				0.1029411554336548,
+				0.1029411554336548,
+				0.1029411554336548 
+			] 
+		},
+		{
+			"name": "eye",
+			"value": [
+				35,
+				-91,
+				34 
+			] 
+		},
+		{
+			"name": "center",
+			"value": [
+				12,
+				44,
+				48 
+			] 
+		},
+		{
+			"name": "enableGrid",
+			"value": [
+				true 
+			] 
+		},
+		{
+			"name": "scaleModel",
+			"value": [
+				0.1000000014901161 
+			] 
+		},
+		{
+			"name": "translateModel",
+			"value": [
+				0,
+				0,
+				0 
+			] 
+		} 
+	] 
+} 

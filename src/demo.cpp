@@ -1,7 +1,7 @@
 #include "spdlog/spdlog.h"
 
 #include "demo.hpp"
-#include "part.hpp"
+#include "engine/part.hpp"
 #include <imgui.h>
 
 extern Part *CreatePart01();
@@ -33,10 +33,17 @@ bool Demo::Init() {
   return InitParts();
 }
 
+void Demo::Delete() {
+  for (auto it : parts)
+    it.second->parameters.Save(it.second->Name());
+}
+
 bool Demo::InitParts() {
   double start = 0;
   for (auto it : parts) {
     spdlog::info("*** Part {} init", it.first);
+    if (!it.second->parameters.Load(it.second->Name()))
+      return false;
     if (!it.second->Init())
       return false;
     it.second->start = start;
@@ -73,7 +80,7 @@ void Demo::Windows() {
     if (!part->showWindow)
       continue;
     if (ImGui::Begin(part->Name(), &part->showWindow)) {
-      part->GUI();
+      part->parameters.GUI();
       ImGui::End();
     }
   }

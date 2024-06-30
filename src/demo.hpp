@@ -22,6 +22,7 @@ public:
   static Demo *Instance();
 
   bool Init();
+  void Delete();
 
   void Begin(const double time);
   void Render(const double time);

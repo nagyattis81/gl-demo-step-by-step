@@ -1,10 +1,10 @@
-#include "part.hpp"
 
 #include "constants.hpp"
 #include "engine/camera.hpp"
 #include "engine/color.hpp"
 #include "engine/geometry.hpp"
 #include "engine/sprite.hpp"
+#include "engine/part.hpp"
 #include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>
 

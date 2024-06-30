@@ -5,7 +5,6 @@
 #include "engine/gui.hpp"
 #include "engine/music.hpp"
 #include "engine/window.hpp"
-#include "part.hpp"
 #include <memory>
 
 using namespace std;
@@ -48,6 +47,9 @@ int main() {
 
     window->SwapBuffers();
   }
+
+  if (Constants::EDITOR)
+    demo->Delete();
 
   return EXIT_SUCCESS;
 }

@@ -4,7 +4,7 @@
 #include "engine/geometry.hpp"
 #include "engine/grid.hpp"
 #include "engine/model.hpp"
-#include "part.hpp"
+#include "engine/part.hpp"
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <imgui.h>
@@ -16,9 +16,19 @@ struct Part02 : public Part {
   bool enableGrid = true;
   float scaleModel = 0.1f;
   vec3 translateModel = vec3(0.0f);
+
   Camera camera;
   Grid grid;
   Model model;
+
+  Part02() {
+    parameters.Color3("clearColor", &clearColor);
+    parameters.Vec3("eye", &eye);
+    parameters.Vec3("center", &center);
+    parameters.Bool("enableGrid", &enableGrid);
+    parameters.Float("scaleModel", &scaleModel, 0.001f, 0.001f, 1.0f, "%.3f");
+    parameters.Vec3("translateModel", &translateModel);
+  }
 
   const char *Name() override { return "Part02"; }
 
@@ -33,16 +43,6 @@ struct Part02 : public Part {
                       .count = 400,
                       .normals = false,
                       .color = Color::WHITE});
-  }
-
-  void GUI() override {
-    ImGui::ColorEdit3("clearColor", &clearColor.r);
-    ImGui::DragFloat3("eye", &eye.x);
-    ImGui::DragFloat3("center", &center.x);
-    ImGui::Checkbox("enableGrid", &enableGrid);
-    ImGui::DragFloat("scaleModel", &scaleModel, 0.001f, 0.001f, 1.0f, "%.3f",
-                     ImGuiSliderFlags_AlwaysClamp);
-    ImGui::DragFloat3("translateModel", &translateModel.x);
   }
 
   void Render(const float globalTime) override {
